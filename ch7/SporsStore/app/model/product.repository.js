@@ -26,13 +26,13 @@ var ProductRepository = (function () {
         return this.products.filter(function (p) { return category == null || p.category == category; });
     };
     ProductRepository.prototype.getProduct = function (id) {
-        return this.products.find(function (p) { return p.id == id; });
+        return this.products.filter(function (p) { return p.id == id; });
     };
     ProductRepository.prototype.getCategories = function () {
         return this.categories;
     };
     ProductRepository = __decorate([
-        core_1.Injectable, 
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [static_datasource_1.StaticDataSource])
     ], ProductRepository);
     return ProductRepository;

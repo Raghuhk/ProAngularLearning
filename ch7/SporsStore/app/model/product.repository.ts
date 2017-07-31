@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Product } from "./product.model";
 import { StaticDataSource } from "./static.datasource";
 
-@Injectable
+@Injectable()
 export class ProductRepository {
 	private products : Product[] = [];
-	private categories: string[] = [];
+	private categories: string[] = []; 
 	
 	constructor (private datasource: StaticDataSource){
 		datasource.getProducts().subscribe(
@@ -21,7 +21,7 @@ export class ProductRepository {
 	}
 	
 	getProduct( id: number):Product{
-		return this.products.find(p=> p.id==id);
+		return this.products.filter(p=> p.id==id);
 	}
 	
 	getCategories(): string[]{

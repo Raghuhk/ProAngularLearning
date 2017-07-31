@@ -1,0 +1,25 @@
+<div class="navbar navbar-inverse bg-inverse">
+	<a class="navbar-brand">SPORTS STORE</a>
+</div>
+<button (click)="changeCategory('Category 2')">change category</button>
+<div class="col-xs-3 p-a-1">
+	<button class="btn btn-block btn-outline-primary" (click)="changeCategory()" [class.active]="selectedCategory==null">
+		HOME
+	</button>
+	<button *ngFor="let cat of categories" class="btn btn-block btn-outline-primary" (click)="changeCategory(cat)" [class.active]="cat==selectedCategory">
+		{{cat}}
+	</button>
+</div>
+<div class="col-xs-9  p-a-1">
+	<div *ngFor="let product of products" class="card card-outline-primary">
+		<h4 class="card-header">
+			{{product.name}}
+			<span class="pull-xs-right tag tag-pill tag-primary">
+				{{product.price | number:"2.2-2" | currency:"USD":true}}
+			</span>
+		</h4>
+		<div class="card-text p-a-1">
+			{{product.description}}
+		</div>
+	</div>
+</div>

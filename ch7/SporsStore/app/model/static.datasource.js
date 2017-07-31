@@ -16,7 +16,7 @@ var StaticDataSource = (function () {
     function StaticDataSource() {
         this.products = [
             new product_model_1.Product(1, "Product 1", "Category 1", "Product 1 (Category 1)", 100),
-            new product_model_1.Product(2, "Product 2", "Category 1", "Product 2 (Category 1)", 100),
+            new product_model_1.Product(2, "Product 2", "Category 1", "Product 2 (Category 1)", 300),
             new product_model_1.Product(3, "Product 3", "Category 1", "Product 3 (Category 1)", 100),
             new product_model_1.Product(4, "Product 4", "Category 1", "Product 4 (Category 1)", 100),
             new product_model_1.Product(5, "Product 5", "Category 1", "Product 5 (Category 1)", 100),
@@ -36,7 +36,7 @@ var StaticDataSource = (function () {
         return Observable_1.Observable.from([this.products]);
     };
     StaticDataSource = __decorate([
-        core_1.Injectable, 
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], StaticDataSource);
     return StaticDataSource;
