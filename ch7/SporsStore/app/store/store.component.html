@@ -21,4 +21,15 @@
 			{{product.description}}
 		</div>
 	</div>
+	<div>
+		<select [value]="productsPerPage" (change)="changePageSize($event.target.value)">
+			<option value="3">3 per page</option>
+			<option value="4">4 per page</option>
+			<option value="5">5 per page</option>
+			<option value="6">6 per page</option>
+		</select>
+	</div>
+	<div>
+		<button *ngFor="let page of pageNumbers" (click)="changePage(page)">{{page}}</button>
+	</div>
 </div>
