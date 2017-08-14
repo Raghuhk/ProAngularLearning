@@ -1,7 +1,7 @@
 (function (global) {
     var paths = {
         "@angular/*": "node_modules/@angular/*",
-		"rxjs/*":"nodemodules/rxjs/bundles/Rx.min.js"
+		"rxjs/*":"node_modules/rxjs/bundles/Rx.min.js"
     }
     var packages = { "app": {} };
     var angularModules = ["common", "compiler",

@@ -9,21 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var repository_model_1 = require("./repository.model");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.model = new repository_model_1.Model();
+var platform_browser_1 = require("@angular/platform-browser");
+var component_1 = require("./component");
+var AppModule = (function () {
+    function AppModule() {
     }
-    AppComponent.prototype.getClasses = function () {
-        return this.model.getProducts().length == 5 ? "bg-success" : "bg-warning";
-    };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: "app",
-            templateUrl: "app/template.html"
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [platform_browser_1.BrowserModule],
+            declarations: [component_1.AppComponent],
+            bootstrap: [component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AppModule);
+    return AppModule;
 }());
-exports.AppComponent = AppComponent;
+exports.AppModule = AppModule;
