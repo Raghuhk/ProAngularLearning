@@ -17,6 +17,21 @@ var AppComponent = (function () {
     AppComponent.prototype.getClasses = function () {
         return this.model.getProducts().length == 5 ? "bg-success" : "bg-warning";
     };
+    AppComponent.prototype.getClassesById = function (key) {
+        var product = this.model.getProduct(key);
+        var backgroundClass = "";
+        if (product.price > 200) {
+            backgroundClass = "bg-warning";
+        }
+        else if (product.price > 50) {
+            backgroundClass = "bg-info";
+        }
+        else {
+            backgroundClass = "bg-success";
+        }
+        var returnClass = "p-a-1 " + backgroundClass;
+        return returnClass;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "app",
