@@ -10,14 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
-var AppComponent = (function () {
-    function AppComponent() {
+var ProductComponent = (function () {
+    function ProductComponent(ref) {
         this.model = new repository_model_1.Model();
+        this.targetName = "Kayak";
+        window.appRef = ref;
+        window.model = this.model;
     }
-    AppComponent.prototype.getClasses = function () {
+    ProductComponent.prototype.getProductByPosition = function (position) {
+        return this.model.getProducts()[position];
+    };
+    ProductComponent.prototype.getClassesByPosition = function (position) {
+        var product = this.getProductByPosition(position);
+        return this.getClassesById(product.id);
+    };
+    ProductComponent.prototype.getProduct = function (key) {
+        return this.model.getProduct(key);
+    };
+    ProductComponent.prototype.getProducts = function () {
+        return this.model.getProducts();
+    };
+    ProductComponent.prototype.getProductCount = function () {
+        console.log("Entered getProductCount");
+        return this.getProducts().length;
+    };
+    ProductComponent.prototype.getClasses = function () {
+        console.log("Entered getClasses");
         return this.model.getProducts().length == 5 ? "bg-success" : "bg-warning";
     };
-    AppComponent.prototype.getClassesById = function (key) {
+    ProductComponent.prototype.getClassesById = function (key) {
         var product = this.model.getProduct(key);
         var backgroundClass = "";
         if (product.price > 200) {
@@ -32,13 +53,16 @@ var AppComponent = (function () {
         var returnClass = "p-a-1 " + backgroundClass;
         return returnClass;
     };
-    AppComponent = __decorate([
+    ProductComponent.prototype.getKeyForTracking = function (id, product) {
+        return product.id;
+    };
+    ProductComponent = __decorate([
         core_1.Component({
             selector: "app",
             templateUrl: "app/template.html"
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [core_1.ApplicationRef])
+    ], ProductComponent);
+    return ProductComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.ProductComponent = ProductComponent;

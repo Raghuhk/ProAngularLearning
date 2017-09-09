@@ -21,5 +21,9 @@
 	</tr>
 </table>
 <div *ngFor="let currProd of model.getProducts()" [class]="getClassesById(currProd.id)">
-	First product is {{currProd.name}} and category is {{currProd.category}}
+	Product is {{currProd.name}} and category is {{currProd.category}}
+</div>
+
+<div [ngClass]="getClassesByPosition(1)">
+	First product is: {{getProductByPosition(1).name}}
 </div>

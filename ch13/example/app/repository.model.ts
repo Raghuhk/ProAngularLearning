@@ -45,4 +45,9 @@ export class Model {
         }
         return candidate;
     }
+	
+	swapProducts(){
+		let p = this.products.shift();
+		this.products.push(new Product(p.id,'New Kayak', p.category,p.price));
+	}
 }
