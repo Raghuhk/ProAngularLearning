@@ -8,3 +8,22 @@
 <td>{{item.price}}</td>
 </tr>
 </table>
+
+<div>
+	<input [value]="selectedProduct" (input)="selectedProduct=$event.target.value"/>
+</div>
+
+<div>
+	<input [value]="selectedProduct" (input)="selectedProduct=$event.target.value"/>
+</div>
+
+<div>
+	<input [(ngModel)]="selectedProduct"/>
+</div>
+<div> Enter details of new product to add</div>
+<div>
+<input [value]="newProduct.name" (input)="newProduct.name=$event.target.value"/>
+<input [(ngModel)]="newProduct.category"/>
+<input [(ngModel)]="newProduct.price"/>
+<button (click)="addProduct(newProduct)">Create</button>
+</div>

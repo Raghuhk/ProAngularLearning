@@ -10,15 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
+var product_model_1 = require("./product.model");
 var ProductComponent = (function () {
     function ProductComponent() {
         this.model = new repository_model_1.Model();
+        this.newProduct = new product_model_1.Product();
     }
     ProductComponent.prototype.getProduct = function (key) {
         return this.model.getProduct(key);
     };
     ProductComponent.prototype.getProducts = function () {
         return this.model.getProducts();
+    };
+    ProductComponent.prototype.getJsonRepresentation = function (product) {
+        return JSON.stringify(product);
+    };
+    ProductComponent.prototype.addProduct = function (product) {
+        console.log("new product added:" + this.getJsonRepresentation(this.newProduct));
     };
     ProductComponent = __decorate([
         core_1.Component({
