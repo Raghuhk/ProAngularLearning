@@ -16,14 +16,31 @@
 <div>
 	<input [value]="selectedProduct" (input)="selectedProduct=$event.target.value"/>
 </div>
+<style>
+input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+</style>
 
 <div>
 	<input [(ngModel)]="selectedProduct"/>
 </div>
 <div> Enter details of new product to add</div>
+<form novalidate (submit)="addProduct(newProduct)">
+	<div>
+		<input name="name" #name="ngModel" [(ngModel)]="newProduct.name" required minlength="2" maxlength="10" pattern="^[A-Za-z ]+$"/>
+		<input name="category" #category="ngModel" [(ngModel)]="newProduct.category" required minlength="5" maxlength="7" />
+		<input name ="price" [(ngModel)]="newProduct.price"/>
+		<button  type="submit">Create</button>
+	</div>
+	<div *ngIf="(name.dirty && name.invalid) || (category.invalid)">
+		<div *ngIf="name.errors?.minlength || category.errors?.minlength">
+			Min lenght is not satisfied
+		</div>
+		<div *ngIf="name.errors?.pattern">
+			Pattern is not satisfied
+		</div>
+	</div>
+</form>
 <div>
-<input [value]="newProduct.name" (input)="newProduct.name=$event.target.value"/>
-<input [(ngModel)]="newProduct.category"/>
-<input [(ngModel)]="newProduct.price"/>
-<button (click)="addProduct(newProduct)">Create</button>
+	Newly added product is {{getJsonRepresentation(newProduct)}}
 </div>
